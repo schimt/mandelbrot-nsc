@@ -5,6 +5,7 @@ Course : Numerical Scientific Computing 2026
 """
 
 import numpy as np
+import time
 
 def mandelbrot(c):
     """
@@ -54,5 +55,12 @@ def compute_mandelbrot_grid(width, height, max_iter=200):
     return grid
 
 if __name__ == "__main__":
+    # Small test grid
     grid = compute_mandelbrot_grid(100, 100)
     print(grid.shape)
+
+    # Timing benchmark
+    start = time.time()
+    grid = compute_mandelbrot_grid(1024, 1024)
+    elapsed = time.time() - start
+    print(f"Computation took {elapsed:.3f} seconds")
