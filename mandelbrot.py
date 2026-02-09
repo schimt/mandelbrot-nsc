@@ -6,6 +6,9 @@ Course : Numerical Scientific Computing 2026
 
 import numpy as np
 import time
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("TkAgg")
 
 def mandelbrot(c):
     """
@@ -64,3 +67,10 @@ if __name__ == "__main__":
     grid = compute_mandelbrot_grid(1024, 1024)
     elapsed = time.time() - start
     print(f"Computation took {elapsed:.3f} seconds")
+
+    plt.imshow(grid, cmap="viridis")
+    plt.colorbar(label="Iterations")
+    plt.title("Mandelbrot Set")
+    plt.savefig("mandelbrot.png", dpi=150)
+    print("Matplotlib backend:", plt.get_backend())
+    plt.show()
